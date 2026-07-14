@@ -49,6 +49,12 @@ GitHub Desktop only supports one account at a time. GITmaxed fixes this.
 - UI needs polish
 - No automated tests for multi-account flows
 
+
+
+https://github.com/user-attachments/assets/53c91f6d-0d72-4e2c-8bfe-c241f8029126
+
+
+
 ## License
 
 MIT
