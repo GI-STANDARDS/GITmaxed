@@ -14,7 +14,7 @@ Manage **multiple GitHub accounts** in a single GitHub Desktop installation with
 
 ---
 
-**One Desktop. Multiple GitHub Accounts.**
+**One Desktop. Multiple GitHub Accounts. [Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
 
 </div>
 
@@ -255,6 +255,6 @@ Licensed under the **MIT License**.
 ### ❤️ Built for developers managing multiple GitHub identities.
 
 **No more logging in. No more logging out. Just code.**
+14-jul-2026 8AM
 
 </div>
-14-jul-2026 8AM
