@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 GITmaxed
+# 🚀 [GITmaxed](https://github.com/GI-STANDARDS/GITmaxed/releases/latest)
 
 ### **Multi-Account GitHub Desktop for Power Developers**
 
@@ -62,14 +62,16 @@ https://github.com/user-attachments/assets/53c91f6d-0d72-4e2c-8bfe-c241f8029126
 
 ## 📥 Installation
 
+Download the [Latest Release](https://github.com/GI-STANDARDS/GITmaxed/releases/latest)
+
 ```text
-1. Download the latest release
-2. Launch GitHubDesktop.exe
-3. Sign in with your first GitHub account
-4. Open:
+
+1. Launch GitHubDesktop.exe
+2. Sign in with your first GitHub account
+3. Open:
    Settings → Accounts
-5. Add additional GitHub accounts
-6. Start working 🚀
+4. Add additional GitHub accounts
+5. Start working 🚀
 ```
 
 ---
@@ -235,7 +237,7 @@ Open Pull Request 🚀
 
 # ⭐ Support
 
-If GITmaxed saves you time,
+If [GITmaxed](https://github.com/GI-STANDARDS/GITmaxed/releases/latest) saves you time,
 
 ⭐ **Star the repository**
 
