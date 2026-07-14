@@ -63,10 +63,6 @@ The feature introduces a **3-tier account resolution strategy**:
 - `app/src/lib/email.ts` — `lookupPreferredEmail()`
 - `app/src/ui/lib/default-dir.ts` — `getDefaultDirForAccount()`, `setDefaultDirForAccount()`
 
-### Screenshots / Video
-
-**Video Demo — Full Multi-Account Workflow:**
-
 https://github.com/user-attachments/assets/c402893c-7d84-4b9f-8322-efa80f2e751b
 
 The video demonstrates:
