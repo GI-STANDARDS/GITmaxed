@@ -14,7 +14,7 @@ Manage **multiple GitHub accounts** in a single GitHub Desktop installation with
 
 ---
 
-**One Desktop. Multiple GitHub Accounts. Zero Hassle.**
+**One Desktop. Multiple GitHub Accounts.**
 
 </div>
 
