@@ -65,7 +65,6 @@ https://github.com/user-attachments/assets/53c91f6d-0d72-4e2c-8bfe-c241f8029126
 Download the [Latest Release](https://github.com/GI-STANDARDS/GITmaxed/releases/latest)
 
 ```text
-
 1. Launch GitHubDesktop.exe
 2. Sign in with your first GitHub account
 3. Open:
