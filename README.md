@@ -94,4 +94,4 @@ Built entirely by **@GI-STANDARDS** as a solo project.
 **Related:**
 - Original tracking issue: #3707
 - Previous attempt (closed): #21467 by Mahmadabid
-- Fork: [GI-STANDARDS/git-max-mod](https://github.com/GI-STANDARDS/GITmaxed)
+- Fork: [GI-STANDARDS/GITmaxed](https://github.com/GI-STANDARDS/GITmaxed)
