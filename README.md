@@ -252,7 +252,7 @@ Licensed under the **MIT License**.
 
 <div align="center">
 
-### ❤️ Built for developers managing multiple GitHub identities.
+### Built with ❤️ by GI-STANDARDS for developers managing multiple GitHub identities.
 
 **No more logging in. No more logging out. Just code.**
 14-jul-2026 8AM
