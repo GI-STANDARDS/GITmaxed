@@ -246,7 +246,7 @@ and help other developers discover it.
 
 # 📜 License
 
-Licensed under the **MIT License**.
+Licensed under the **[MIT License](https://github.com/GI-STANDARDS/GITmaxed/blob/main/LICENSE)**.
 
 ---
 
