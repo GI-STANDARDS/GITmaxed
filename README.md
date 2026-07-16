@@ -14,7 +14,7 @@ Manage **multiple GitHub accounts** in a single GitHub Desktop installation with
 
 ---
 
-**One Desktop. Multiple GitHub Accounts. [Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
+**One Desktop. Multiple GitHub Accounts.**
 
 </div>
 
@@ -26,6 +26,10 @@ Manage **multiple GitHub accounts** in a single GitHub Desktop installation with
 > **GitHub Desktop currently supports only one signed-in GitHub account at a time.**
 >
 > GITmaxed removes this limitation by allowing you to use multiple GitHub accounts inside the same application.
+> 
+> **[Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
+>
+> 14-jul-2026 8AM
 
 Perfect for developers who use:
 
@@ -253,9 +257,4 @@ Licensed under the **[MIT License](https://github.com/GI-STANDARDS/GITmaxed/blob
 <div align="center">
 
 ### Built with ❤️ by GI-STANDARDS for developers
-### managing multiple GitHub identities.
-
-**No more logging in. No more logging out. Just code.**
-14-jul-2026 8AM
-
 </div>
