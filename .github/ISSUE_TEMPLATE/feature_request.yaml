@@ -1,0 +1,36 @@
+name: Feature Request
+description: Submit a feature request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting a feature request! This issue tracker is for GITmaxed. Please search the issue tracker to see if there is an existing issue for the feature you are requesting.
+  - type: textarea
+    id: the-feature-request
+    attributes:
+      label: The feature request
+      description:
+        Write a clear and concise description of what the feature or problem is.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed solution
+      description: Share how this will benefit GITmaxed and its users.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description:
+        Please include any other context, like screenshots or mockups, if
+        applicable.
+  - type: textarea
+    id: multi-account-impact
+    attributes:
+      label: Multi-account impact
+      description:
+        If this feature relates to multi-account functionality, please describe
+        how it would improve the multi-account experience.
