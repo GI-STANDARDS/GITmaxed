@@ -20,16 +20,16 @@ Manage **multiple GitHub accounts** in a single GitHub Desktop installation with
 
 ---
 
-# ✨ Why GITmaxed?
+# ✨ GITmaxed
 
 > [!IMPORTANT]
-> **GitHub Desktop currently supports only one signed-in GitHub account at a time.**
+> - **GitHub Desktop currently supports only one signed-in GitHub account at a time.**
 >
-> GITmaxed removes this limitation by allowing you to use multiple GitHub accounts inside the same application.
+> - GITmaxed removes this limitation by allowing you to use multiple GitHub accounts inside the same application.
 > 
-> **[Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
+> - **[Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
 >
-> 14-jul-2026 8AM
+> - 14-jul-2026 8AM
 
 Perfect for developers who use:
 
