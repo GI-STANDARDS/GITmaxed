@@ -7,7 +7,7 @@
   "main": "./main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/desktop/desktop.git"
+    "url": "https://github.com/GI-STANDARDS/GITmaxed.git"
   },
   "description": "Multi-account Git client — manage multiple GitHub accounts in one app",
   "author": {
