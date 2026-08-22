@@ -27,6 +27,10 @@ Manage **multiple GitHub accounts** in a single GitHub Desktop installation with
 >
 > - GITmaxed removes this limitation by allowing you to use multiple GitHub accounts inside the same application.
 > 
+> - GITmaxed does not use any third-party service to log you into GITHUB.
+> 
+> - The only major change is the addition of multiple-account support. Other than that, the code remains essentially the same as the original GITHUB source code.
+> 
 > - **[Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
 >
 > - 14-jul-2026 8AM
@@ -250,16 +254,11 @@ and help other developers discover it.
 
 # 📜 License
 
-Licensed under the **[MIT License](https://github.com/GI-STANDARDS/GITmaxed/blob/main/LICENSE)**.
+Licensed under the **[MIT License](https://github.com/GI-STANDARDS/GITmaxed/blob/main/LICENSE)**
 
 ---
 
-- GITmaxed does not use any third-party service to log you into GITHUB.
-
-- The only major change is the addition of multiple-account support. Other than that, the code remains essentially the same as the original Github-Desktop source code.
-
-- GITmaxed is intended to provide the same core experience while adding convenient multi-account functionality.
----
 <div align="center">
+   
 ### Built with ❤️ by GI-STANDARDS for developers
 </div>
