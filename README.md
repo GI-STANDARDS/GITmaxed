@@ -256,5 +256,11 @@ Licensed under the **[MIT License](https://github.com/GI-STANDARDS/GITmaxed/blob
 
 <div align="center">
 
+GITmaxed does not use any third-party service to log you into GI-STANDARD.
+
+The only major change is the addition of multiple-account support. Other than that, the code remains essentially the same as the original GI-STANDARD source code.
+
+GITmaxed is intended to provide the same core experience while adding convenient multi-account functionality.
+
 ### Built with ❤️ by GI-STANDARDS for developers
 </div>
