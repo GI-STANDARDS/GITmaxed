@@ -254,13 +254,13 @@ Licensed under the **[MIT License](https://github.com/GI-STANDARDS/GITmaxed/blob
 
 ---
 
-GITmaxed does not use any third-party service to log you into GITHUB.
+> - GITmaxed does not use any third-party service to log you into GITHUB.
 
-The only major change is the addition of multiple-account support. Other than that, the code remains essentially the same as the original Github-Desktop source code.
+> - The only major change is the addition of multiple-account support. Other than that, the code remains essentially the same as the original Github-Desktop source code.
 
-GITmaxed is intended to provide the same core experience while adding convenient multi-account functionality.
+> - GITmaxed is intended to provide the same core experience while adding convenient multi-account functionality.
 
 <div align="center">
-
+---
 ### Built with ❤️ by GI-STANDARDS for developers
 </div>
