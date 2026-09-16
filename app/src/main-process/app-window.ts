@@ -59,6 +59,7 @@ export class AppWindow {
       minWidth: this.minWidth,
       minHeight: this.minHeight,
       show: false,
+      title: 'GITmaxed',
       // This fixes subpixel aliasing on Windows
       // See https://github.com/atom/atom/commit/683bef5b9d133cb194b476938c77cc07fd05b972
       backgroundColor: '#fff',

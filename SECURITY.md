@@ -1,34 +1,11 @@
-# Security Policy
+GitHub takes the security of our software products and services seriously, including the open source code repositories managed through our GitHub organizations, such as [GitHub](https://github.com/GitHub).
 
-GITmaxed takes the security of our software seriously. As a fork of GitHub Desktop, we inherit the security practices of the original project.
+If you believe you have found a security vulnerability in this GitHub-owned open source repository, you can report it to us in one of two ways.
 
-## Reporting a Vulnerability
+If the vulnerability you have found is *not* [in scope for the GitHub Bug Bounty Program](https://bounty.github.com/#scope) or if you do not wish to be considered for a bounty reward, please report the issue to us directly using [private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability).
 
-If you believe you have found a security vulnerability in GITmaxed, please report it responsibly.
+If the vulnerability you have found is [in scope for the GitHub Bug Bounty Program](https://bounty.github.com/#scope) and you would like for your finding to be considered for a bounty reward, please submit the vulnerability to us through [HackerOne](https://hackerone.com/github) in order to be eligible to receive a bounty award.
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+**Please do not report security vulnerabilities through public GitHub issues, discussions, or pull requests.**
 
-Instead, please report them via email to: **gitmaxed@outlook.com**
-
-Please include:
-- Description of the vulnerability
-- Steps to reproduce
-- Potential impact
-- Any suggested fix (if applicable)
-
-## Response Timeline
-
-- We will acknowledge receipt within 48 hours
-- We will provide an initial assessment within 7 days
-- We will work with you to address confirmed vulnerabilities
-
-## Scope
-
-This security policy applies to:
-- GITmaxed application code
-- Multi-account authentication handling
-- Token storage and credential management
-
-## Attribution
-
-This security policy is adapted from [GitHub Desktop](https://github.com/desktop/desktop), which is licensed under MIT.
+Thanks for helping make GitHub safe for everyone.

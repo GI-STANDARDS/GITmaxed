@@ -56,9 +56,20 @@ export class Repository {
      */
     public readonly gitDir: string | undefined = undefined,
     /**
-     * The GitHub account login explicitly assigned to this repository.
-     * When set, this account is used for API operations and credential
-     * selection instead of auto-detection. Null means auto-detect.
+     * The path to the main worktree of this repository, recorded when Desktop
+     * switches onto one of its linked worktrees, or undefined if it hasn't been
+     * resolved yet (e.g. for repositories added before this property was
+     * introduced).
+     *
+     * Deleting a linked worktree can take its administrative git metadata with
+     * it, so the worktree set is not always discoverable after the fact. This
+     * records the main worktree while it is still known.
+     */
+    public readonly mainWorktreePath: string | undefined = undefined,
+    /**
+     * GITmaxed: The explicitly assigned GitHub account login for this repository.
+     * When set, this account will be used for all operations on this repo.
+     * null means no explicit assignment (use folder-based or endpoint detection).
      */
     public readonly assignedAccountLogin: string | null = null
   ) {

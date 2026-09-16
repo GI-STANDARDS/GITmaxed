@@ -1,10 +1,10 @@
 import { Account } from '../models/account'
 
+const appName = (): string => (__DEV__ ? 'GITmaxed Dev' : 'GITmaxed')
+
 /** Get the auth key for the user, unique per account login on the endpoint. */
 export function getKeyForAccount(account: Account): string {
-  const appName = 'GITmaxed'
-
-  return `${appName} - ${account.endpoint}/${account.login}`
+  return `${appName()} - ${account.endpoint}/${account.login}`
 }
 
 /**
@@ -13,7 +13,10 @@ export function getKeyForAccount(account: Account): string {
  * Used only during migration of pre-multi-account tokens.
  */
 export function getLegacyKeyForEndpoint(endpoint: string): string {
-  const appName = 'GITmaxed'
+  return `${appName()} - ${endpoint}`
+}
 
-  return `${appName} - ${endpoint}`
+/** Get the auth key for the endpoint. */
+export function getKeyForEndpoint(endpoint: string): string {
+  return `${appName()} - ${endpoint}`
 }

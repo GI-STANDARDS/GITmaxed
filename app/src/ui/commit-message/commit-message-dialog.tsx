@@ -194,10 +194,11 @@ export class CommitMessageDialog extends React.Component<
               this.onCommitSpellcheckEnabledChanged
             }
             repositoryAccount={this.props.repositoryAccount}
-            onAccountChanged={this.onAccountChanged}
             onStopAmending={this.onStopAmending}
             onShowCreateForkDialog={this.onShowCreateForkDialog}
             accounts={this.props.accounts}
+            currentAccount={this.props.repositoryAccount}
+            onAccountChanged={this.onAccountChanged}
             isCommitting={false}
             hookProgress={null}
             onShowCommitProgress={undefined}

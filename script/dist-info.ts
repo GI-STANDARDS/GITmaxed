@@ -21,10 +21,12 @@ export function getDistPath() {
 }
 
 export function getExecutableName() {
+  const suffix = process.env.NODE_ENV === 'development' ? '-dev' : ''
+
   if (process.platform === 'win32') {
-    return getWindowsIdentifierName()
+    return `${getWindowsIdentifierName()}${suffix}`
   } else if (process.platform === 'linux') {
-    return 'gitmaxed'
+    return 'desktop'
   } else {
     return productName
   }

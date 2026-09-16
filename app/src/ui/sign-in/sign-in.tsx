@@ -18,6 +18,10 @@ import { getHTMLURL } from '../../lib/api'
 import { isDotCom } from '../../lib/endpoint-capabilities'
 import { Octicon } from '../octicons'
 import * as octicons from '../octicons/octicons.generated'
+import {
+  EnterpriseServerConfirmation,
+  enterpriseServerConfirmationDescriptionId,
+} from '../lib/enterprise-server-confirmation'
 
 interface ISignInProps {
   readonly dispatcher: Dispatcher
@@ -40,8 +44,8 @@ const DefaultTitle = 'Sign in'
 
 const browserSignInInfoContent = (
   <p>
-    Your browser will redirect you back to GitHub Desktop once you've signed in.
-    If your browser asks for your permission to launch GitHub Desktop, please
+    Your browser will redirect you back to GITmaxed once you've signed in.
+    If your browser asks for your permission to launch GITmaxed, please
     allow it.
   </p>
 )
@@ -59,6 +63,10 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
   }
 
   public componentDidUpdate(prevProps: ISignInProps) {
+    // Whenever the sign in step changes we replace the dialog contents which
+    // means we need to re-focus the first suitable child element as it's
+    // essentially a "new" dialog we're showing only the dialog component itself
+    // doesn't know that.
     if (prevProps.signInState !== null && this.props.signInState !== null) {
       if (prevProps.signInState.kind !== this.props.signInState.kind) {
         this.dialogRef.current?.focusFirstSuitableChild()
@@ -102,7 +110,9 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
           .then(() => this.props.dispatcher.setSignInEndpoint(state.endpoint))
         break
       case SignInStep.Authentication:
-        if (this.state.authMethod === 'ssh') {
+        if (state.isUnrecognizedEnterpriseServer) {
+          this.props.dispatcher.requestBrowserAuthentication()
+        } else if (this.state.authMethod === 'ssh') {
           this.onDismissed()
         } else {
           this.props.dispatcher.requestBrowserAuthentication()
@@ -156,8 +166,10 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
           primaryButtonText = __DARWIN__ ? 'Done' : 'Done'
         } else if (this.state.authMethod === 'browser') {
           primaryButtonText = continueWithBrowserLabel
-        } else {
+        } else if (isDotCom(state.endpoint)) {
           return null
+        } else {
+          primaryButtonText = continueWithBrowserLabel
         }
         break
       default:
@@ -275,6 +287,15 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
       )
     }
 
+    if (state.isUnrecognizedEnterpriseServer) {
+      return (
+        <DialogContent>
+          <EnterpriseServerConfirmation endpoint={state.endpoint} />
+          {browserSignInInfoContent}
+        </DialogContent>
+      )
+    }
+
     if (isDotCom(state.endpoint)) {
       return (
         <DialogContent>
@@ -366,6 +387,16 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
       title = DefaultTitle
     }
 
+    const confirmationDialogProps =
+      state.kind === SignInStep.Authentication &&
+      state.isUnrecognizedEnterpriseServer &&
+      this.state.authMethod !== 'ssh'
+        ? {
+            role: 'alertdialog' as const,
+            ariaDescribedBy: enterpriseServerConfirmationDescriptionId,
+          }
+        : {}
+
     return (
       <Dialog
         id="sign-in"
@@ -375,6 +406,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
         onSubmit={this.onSubmit}
         loading={state.loading}
         ref={this.dialogRef}
+        {...confirmationDialogProps}
       >
         {errors}
         {this.renderStep()}

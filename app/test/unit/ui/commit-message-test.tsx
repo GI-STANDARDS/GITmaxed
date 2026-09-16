@@ -123,6 +123,8 @@ function createProps(
     onStopAmending: () => {},
     onShowCreateForkDialog: () => {},
     accounts: [account],
+    currentAccount: null,
+    onAccountChanged: () => {},
     skipCommitHooks: false,
     signOffCommits: false,
     allowEmptyCommit: false,

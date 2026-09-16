@@ -37,6 +37,7 @@ export const getHasRejectedCredentialsForEndpoint = (
 const isBackgroundTaskEnvironment = new Map<string, boolean>()
 const trampolineEnvironmentPath = new Map<string, string>()
 
+// --- GITmaxed: Account assignment state ---
 /**
  * A mapping from repository path (lowercase) to the explicitly assigned
  * account login. Used by the credential helper to select the correct
@@ -44,6 +45,11 @@ const trampolineEnvironmentPath = new Map<string, string>()
  */
 const repoPathToAssignedAccount = new Map<string, string | null>()
 
+/**
+ * Register the account assignment for a repository path.
+ * Used by the multi-account system to remember which account
+ * a given repository should use. Passing null clears any assignment.
+ */
 export function setAssignedAccountForRepoPath(
   repoPath: string,
   login: string | null
@@ -56,11 +62,16 @@ export function setAssignedAccountForRepoPath(
   }
 }
 
+/**
+ * Retrieve the assigned account login for a repository path.
+ * Returns undefined if no assignment has been made.
+ */
 export function getAssignedAccountForRepoPath(
   repoPath: string
 ): string | undefined {
   return repoPathToAssignedAccount.get(repoPath.toLowerCase()) ?? undefined
 }
+
 
 export const getTrampolineEnvironmentPath = (trampolineToken: string) =>
   trampolineEnvironmentPath.get(trampolineToken) ?? process.cwd()

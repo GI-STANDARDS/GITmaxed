@@ -1,10 +1,9 @@
 import * as Path from 'path'
 import * as React from 'react'
 import { Dispatcher } from '../dispatcher'
-import { getDefaultDir, setDefaultDir, getDefaultDirForAccount, setDefaultDirForAccount } from '../lib/default-dir'
+import { getDefaultDir, setDefaultDir } from '../lib/default-dir'
 import {
   Account,
-  accountEquals,
   isDotComAccount,
   isEnterpriseAccount,
 } from '../../models/account'
@@ -13,6 +12,7 @@ import {
   IRepositoryIdentifier,
   parseRepositoryIdentifier,
   parseRemote,
+  sanitizeCloneName,
 } from '../../lib/remote-parsing'
 import { findAccountForRemoteURL } from '../../lib/find-account'
 import { API, IAPIRepository, IAPIRepositoryCloneInfo } from '../../lib/api'
@@ -240,14 +240,7 @@ export class CloneRepository extends React.Component<
   }
 
   private initializePath = async () => {
-    const basePath = await getDefaultDir()
-
-    // If an account is selected, use per-account directory
-    const account = this.getAccountForTab(this.props.selectedTab)
-    const initialPath = account
-      ? await getDefaultDirForAccount(account.login)
-      : basePath
-
+    const initialPath = await getDefaultDir()
     const dotComTabState = { ...this.state.dotComTabState, path: initialPath }
     const enterpriseTabState = {
       ...this.state.enterpriseTabState,
@@ -402,22 +395,12 @@ export class CloneRepository extends React.Component<
     }
   }
 
-  private onSelectedAccountChanged = async (account: Account) => {
+  private onSelectedAccountChanged = (account: Account) => {
     if (this.props.selectedTab !== CloneRepositoryTab.Generic) {
       this.setGitHubTabState(
         { selectedAccount: account },
         this.props.selectedTab
       )
-
-      // Update path to include account-specific directory
-      const accountDir = await getDefaultDirForAccount(account.login)
-      const tabState = this.getGitHubTabState(this.props.selectedTab)
-      const lastParsedIdentifier = tabState.lastParsedIdentifier
-      const newPath = lastParsedIdentifier
-        ? Path.join(accountDir, lastParsedIdentifier.name)
-        : accountDir
-
-      this.setGitHubTabState({ path: newPath }, this.props.selectedTab)
     }
   }
 
@@ -426,8 +409,8 @@ export class CloneRepository extends React.Component<
     const tabAccounts = this.getAccountsForTab(tab, this.props.accounts)
     const selectedAccount =
       (tabState.selectedAccount
-        ? tabAccounts.find(a =>
-            accountEquals(a, tabState.selectedAccount!)
+        ? tabAccounts.find(
+            a => a.endpoint === tabState.selectedAccount?.endpoint
           )
         : undefined) ?? tabAccounts.at(0)
 
@@ -629,9 +612,10 @@ export class CloneRepository extends React.Component<
 
     const tabState = this.getSelectedTabState()
     const lastParsedIdentifier = tabState.lastParsedIdentifier
-    const directory = lastParsedIdentifier
-      ? Path.join(path, lastParsedIdentifier.name)
-      : path
+    const safeName = lastParsedIdentifier
+      ? sanitizeCloneName(lastParsedIdentifier.name)
+      : null
+    const directory = safeName ? Path.join(path, safeName) : path
 
     this.setSelectedTabState(
       { path: directory, error: null },
@@ -672,23 +656,19 @@ export class CloneRepository extends React.Component<
       return
     }
 
+    const safeName = parsed ? sanitizeCloneName(parsed.name) : null
+
     let newPath: string
 
     const dirPath = tabState.path
-    // Compute the account-specific base directory so we never strip it
-    const account = this.getAccountForTab(this.props.selectedTab)
-    const accountBase = account
-      ? await getDefaultDirForAccount(account.login)
-      : await getDefaultDir()
-
     if (lastParsedIdentifier) {
-      if (parsed) {
-        newPath = Path.join(accountBase, parsed.name)
+      if (safeName) {
+        newPath = Path.join(Path.dirname(dirPath), safeName)
       } else {
-        newPath = accountBase
+        newPath = Path.dirname(dirPath)
       }
-    } else if (parsed) {
-      newPath = Path.join(dirPath, parsed.name)
+    } else if (safeName) {
+      newPath = Path.join(dirPath, safeName)
     } else {
       newPath = dirPath
     }
@@ -756,11 +736,7 @@ export class CloneRepository extends React.Component<
       return { url }
     }
 
-    // Prefer the account explicitly selected by the user in the clone dialog
-    const selectedAccount = this.getAccountForTab(this.props.selectedTab)
-    const account =
-      selectedAccount ??
-      (await findAccountForRemoteURL(url, this.props.accounts))
+    const account = await findAccountForRemoteURL(url, this.props.accounts)
     if (lastParsedIdentifier !== null && account !== null) {
       const api = API.fromAccount(account)
       const { owner, name } = lastParsedIdentifier
@@ -822,12 +798,7 @@ export class CloneRepository extends React.Component<
     this.props.dispatcher.clone(url, path, { defaultBranch })
     this.props.onDismissed()
 
-    const account = this.getAccountForTab(this.props.selectedTab)
-    if (account) {
-      setDefaultDirForAccount(account.login, Path.resolve(path, '..'))
-    } else {
-      setDefaultDir(Path.resolve(path, '..'))
-    }
+    setDefaultDir(Path.resolve(path, '..'))
   }
 
   private onWindowFocus = () => {

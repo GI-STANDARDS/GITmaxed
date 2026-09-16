@@ -27,7 +27,7 @@ interface IEmail {
   /**
    * Represents whether GitHub has confirmed the user has access to this
    * email address. New users require a verified email address before
-   * they can sign into GitHub Desktop.
+   * they can sign into GITmaxed.
    */
   readonly verified: boolean
   /**
@@ -91,11 +91,6 @@ export class AccountsStore extends TypedBaseStore<ReadonlyArray<Account>> {
 
   /**
    * Add the account to the store.
-   *
-   * Unlike the original implementation, this supports multiple accounts
-   * for the same endpoint (e.g. multiple GitHub.com accounts). If an
-   * account with the same (endpoint, id) already exists it will be
-   * replaced; otherwise the new account is appended.
    */
   public async addAccount(account: Account): Promise<Account | null> {
     await this.loadingPromise
@@ -118,7 +113,6 @@ export class AccountsStore extends TypedBaseStore<ReadonlyArray<Account>> {
       return null
     }
 
-    // Replace existing account with the same (endpoint, id), otherwise append
     const existingIndex = this.accounts.findIndex(
       a => a.endpoint === account.endpoint && a.id === account.id
     )
@@ -215,8 +209,7 @@ export class AccountsStore extends TypedBaseStore<ReadonlyArray<Account>> {
    * Load the users into memory from storage.
    *
    * Handles migration from the old single-token-per-endpoint storage
-   * (legacy key: "GitHub - {endpoint}") to the new per-login storage
-   * (key: "GitHub - {endpoint}/{login}").
+   * (legacy key) to the new per-login storage.
    */
   private async loadFromStore(): Promise<void> {
     const raw = this.dataStore.getItem('users')
@@ -256,8 +249,6 @@ export class AccountsStore extends TypedBaseStore<ReadonlyArray<Account>> {
             )
             // Migrate: store under new key and remove legacy key
             await this.secureStore.setItem(key, account.login, token)
-            // Only delete legacy key if the login matches (old storage used endpoint-only key)
-            // We can't know the old login, but the legacy key's service name is the same
           }
         }
 

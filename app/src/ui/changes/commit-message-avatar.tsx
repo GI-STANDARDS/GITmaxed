@@ -201,6 +201,8 @@ export class CommitMessageAvatar extends React.Component<
   private renderWarningBadge() {
     const { warningType, emailRuleFailures } = this.props
 
+    // the parent component only renders this one if an error/warning is present, so we
+    // only need to check which of the two it is here
     const isError =
       warningType === 'disallowedEmail' && emailRuleFailures?.status === 'fail'
     const classes = classNames('warning-badge', {

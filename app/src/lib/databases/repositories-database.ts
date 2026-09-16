@@ -56,6 +56,12 @@ export interface IDatabaseRepository {
   /** The path to the .git directory for this repository */
   readonly gitDir?: string
 
+  /**
+   * The path to the main worktree of this repository, recorded when switching
+   * onto one of its linked worktrees.
+   */
+  readonly mainWorktreePath?: string
+
   /** The last time the stash entries were checked for the repository */
   readonly lastStashCheckDate?: number | null
 
@@ -70,9 +76,9 @@ export interface IDatabaseRepository {
   readonly isTutorialRepository?: boolean
 
   /**
-   * The GitHub account login explicitly assigned to this repository.
-   * When set, this account is used for API operations and credential
-   * selection instead of auto-detection. Null means auto-detect.
+   * The GitHub account login explicitly assigned to work with this
+   * repository. When set, the assigned account is used for repository
+   * HTTP operations even when the currently signed in account differs.
    */
   readonly assignedAccountLogin?: string | null
 }

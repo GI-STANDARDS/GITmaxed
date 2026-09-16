@@ -1,10 +1,10 @@
-name: Feature Request
+name: ⭐ Feature Request
 description: Submit a feature request
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting a feature request! This issue tracker is for GITmaxed. Please search the issue tracker to see if there is an existing issue for the feature you are requesting.
+        Thanks for submitting a feature request! This issue tracker is for [GitHub Desktop](https://desktop.github.com). Please search the issue tracker to see if there is an existing issue for the feature you are requesting. If you have a feature request for github.com please visit the [GitHub public feedback discussions repository](https://github.com/github/feedback/discussions).
   - type: textarea
     id: the-feature-request
     attributes:
@@ -17,7 +17,7 @@ body:
     id: proposed-solution
     attributes:
       label: Proposed solution
-      description: Share how this will benefit GITmaxed and its users.
+      description: Share how this will benefit GitHub Desktop and its users.
     validations:
       required: true
   - type: textarea
@@ -27,10 +27,3 @@ body:
       description:
         Please include any other context, like screenshots or mockups, if
         applicable.
-  - type: textarea
-    id: multi-account-impact
-    attributes:
-      label: Multi-account impact
-      description:
-        If this feature relates to multi-account functionality, please describe
-        how it would improve the multi-account experience.

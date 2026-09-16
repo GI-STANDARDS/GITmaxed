@@ -112,7 +112,6 @@ interface ICommitMessageProps {
   readonly commitMessage: ICommitMessage | null
   readonly repository: Repository
   readonly repositoryAccount: Account | null
-  readonly onAccountChanged?: (accountLogin: string | null) => void
   readonly autocompletionProviders: ReadonlyArray<IAutocompletionProvider<any>>
   readonly isCommitting?: boolean
   readonly hookProgress: HookProgress | null
@@ -202,6 +201,12 @@ interface ICommitMessageProps {
   readonly onFilesToCommitNotVisible?: (onCommitAnyway: () => {}) => void
   readonly onSuccessfulCommitCreated?: () => void
   readonly accounts: ReadonlyArray<Account>
+
+  /** The currently assigned account for this repository. */
+  readonly currentAccount: Account | null
+
+  /** Called when the user switches the assigned account for this repository. */
+  readonly onAccountChanged: (accountLogin: string | null) => void
 
   /** Optional to add an id to a message that should be provided as an aria
    * description of the submit button */
@@ -790,8 +795,8 @@ export class CommitMessage extends React.Component<
         onOpenGitSettings={this.onOpenGitSettings}
         repository={repository}
         accounts={this.props.accounts}
-        currentAccount={repositoryAccount}
-        onAccountChanged={this.props.onAccountChanged ?? (() => {})}
+        currentAccount={this.props.currentAccount}
+        onAccountChanged={this.props.onAccountChanged}
       />
     )
   }

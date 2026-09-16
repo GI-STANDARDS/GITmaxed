@@ -61,7 +61,9 @@ async function getGitHubCredential(
     repoPath
   )
   if (account) {
-    info(`found GitHub credential for ${endpoint} in store (account: ${account.login})`)
+    info(
+      `found GitHub credential for ${endpoint} in store (account: ${account.login})`
+    )
   }
   return credWithAccount(cred, account)
 }

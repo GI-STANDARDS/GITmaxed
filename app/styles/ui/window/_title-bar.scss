@@ -24,6 +24,9 @@
       color: var(--toolbar-button-secondary-color);
       margin: 0 var(--spacing);
       align-self: center;
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
     }
   }
 

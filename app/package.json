@@ -3,21 +3,23 @@
   "productName": "GITmaxed",
   "bundleID": "com.gitmaxed.app",
   "companyName": "GITmaxed",
-  "version": "1.0.0",
+  "version": "3.6.6",
   "main": "./main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/GI-STANDARDS/GITmaxed.git"
   },
-  "description": "Multi-account Git client — manage multiple GitHub accounts in one app",
+  "description": "The Multiaccount GitHub Extension",
   "author": {
-    "name": "GITmaxed"
+    "name": "GITmaxed Contributors",
+    "email": "gitmaxed@outlook.com",
+    "url": "https://github.com/GI-STANDARDS/GITmaxed"
   },
   "license": "MIT",
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.2",
     "@github/alive-client": "^1.2.0",
-    "@github/copilot-sdk": "^1.0.5",
+    "@github/copilot-sdk": "^1.0.13",
     "@xterm/xterm": "^5.5.0",
     "app-path": "^3.3.0",
     "byline": "^5.0.0",
@@ -33,8 +35,8 @@
     "desktop-notifications": "file:../vendor/desktop-notifications",
     "desktop-trampoline": "file:../vendor/desktop-trampoline",
     "dexie": "^3.2.3",
-    "dompurify": "^3.4.11",
-    "dugite": "^3.2.2",
+    "dompurify": "^3.4.13",
+    "dugite": "^3.2.3",
     "electron-window-state": "^5.0.3",
     "event-kit": "^2.0.0",
     "focus-trap-react": "^8.1.0",

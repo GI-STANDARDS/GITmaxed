@@ -12,17 +12,13 @@ export function send<T extends keyof RequestChannels>(
   channel: T,
   ...args: Parameters<RequestChannels[T]>
 ): void {
-  try {
-    if (webContents.isDestroyed()) {
-      const msg = `failed to send on ${channel}, webContents was destroyed`
-      if (__DEV__) {
-        throw new Error(msg)
-      }
-      log.error(msg)
-    } else {
-      webContents.send(channel, ...args)
+  if (webContents.isDestroyed()) {
+    const msg = `failed to send on ${channel}, webContents was destroyed`
+    if (__DEV__) {
+      throw new Error(msg)
     }
-  } catch (e) {
-    log.error(`failed to send on ${channel}: ${e}`)
+    log.error(msg)
+  } else {
+    webContents.send(channel, ...args)
   }
 }

@@ -121,7 +121,7 @@ export class Acknowledgements extends React.Component<
       >
         <DialogContent>
           <p>
-            <LinkButton uri={WebsiteURL}>GitHub Desktop</LinkButton> is an open
+            <LinkButton uri={WebsiteURL}>GITmaxed</LinkButton> is an open
             source project published under the MIT License. You can view the
             source code and contribute to this project on{' '}
             <LinkButton uri={RepositoryURL}>GitHub</LinkButton>.
@@ -129,7 +129,7 @@ export class Acknowledgements extends React.Component<
 
           {desktopLicense}
 
-          <p>GitHub Desktop also distributes these libraries:</p>
+          <p>GITmaxed also distributes these libraries:</p>
 
           {licenses ? this.renderLicenses(licenses) : <Loading />}
         </DialogContent>

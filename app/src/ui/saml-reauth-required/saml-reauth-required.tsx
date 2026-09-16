@@ -49,11 +49,11 @@ export class SAMLReauthRequiredDialog extends React.Component<
           <p>
             The "{this.props.organizationName}" organization has enabled or
             enforced SAML SSO. To access this repository, you must sign in again
-            and grant GitHub Desktop permission to access the organization's
+            and grant GITmaxed permission to access the organization's
             repositories.
           </p>
           <p>
-            Would you like to open a browser to grant GitHub Desktop permission
+            Would you like to open a browser to grant GITmaxed permission
             to access the repository?
           </p>
         </DialogContent>

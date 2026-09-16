@@ -4,6 +4,8 @@ import {
   app,
   Menu,
   BrowserWindow,
+  clipboard,
+  dialog,
   shell,
   session,
   systemPreferences,
@@ -43,6 +45,8 @@ import {
 } from '../lib/get-architecture'
 import { buildSpellCheckMenu } from './menu/build-spell-check-menu'
 import { getMainGUID, saveGUIDFile } from '../lib/get-main-guid'
+import { getProductName } from '../../package-info'
+import * as registryJs from 'registry-js'
 import {
   getNotificationsPermission,
   requestNotificationsPermission,
@@ -118,7 +122,7 @@ if (__DARWIN__) {
 // On Windows, in order to get notifications properly working for dev builds,
 // we'll want to set the right App User Model ID from production builds.
 if (__WIN32__ && __DEV__) {
-  app.setAppUserModelId('com.squirrel.GitHubDesktop.GitHubDesktop')
+  app.setAppUserModelId('com.gitmaxed.app')
 }
 
 app.on('window-all-closed', () => {
@@ -302,6 +306,8 @@ function handleCLIAction(action: CLIAction) {
   })
 }
 
+const appDisplayName = getProductName()
+
 /**
  * Wrapper around app.setAsDefaultProtocolClient that adds our
  * custom prefix command line switches on Windows.
@@ -311,8 +317,37 @@ function setAsDefaultProtocolClient(protocol: string) {
     app.setAsDefaultProtocolClient(protocol, process.execPath, [
       protocolLauncherArg,
     ])
+    setProtocolFriendlyName(protocol)
   } else {
     app.setAsDefaultProtocolClient(protocol)
+  }
+}
+
+/**
+ * Set the friendly name displayed by the OS/browser when it asks the user
+ * to launch the app for a custom protocol URL (e.g. the OAuth redirect).
+ */
+function setProtocolFriendlyName(protocol: string) {
+  try {
+    const subkey = `Software\\Classes\\${protocol}\\Application`
+    const values: ReadonlyArray<[string, string]> = [
+      ['FriendlyAppName', appDisplayName],
+      ['ApplicationName', appDisplayName],
+      ['', appDisplayName],
+    ]
+    for (const [name, data] of values) {
+      registryJs.setValue(
+        registryJs.HKEY.HKEY_CURRENT_USER,
+        subkey,
+        name,
+        registryJs.RegistryValueType.REG_SZ,
+        data
+      )
+    }
+  } catch (e) {
+    log.error(
+      `setProtocolFriendlyName: failed for protocol ${protocol} ${e}`
+    )
   }
 }
 
@@ -511,6 +546,10 @@ app.on('ready', () => {
     })
   })
 
+  ipcMain.handle('write-clipboard-text', async (_, text) =>
+    clipboard.writeText(text)
+  )
+
   ipcMain.handle('check-for-updates', async (_, url) =>
     mainWindow?.checkForUpdates(url)
   )
@@ -636,6 +675,26 @@ app.on('ready', () => {
   ipcMain.handle('show-item-in-folder', async (_, path) =>
     shell.showItemInFolder(path)
   )
+  ipcMain.handle('confirm-reveal-directory', async event => {
+    const window = BrowserWindow.fromWebContents(event.sender)
+    const options: Electron.MessageBoxOptions = {
+      type: 'warning',
+      title: 'Reveal Repository in Finder?',
+      message: 'This repository might be an application.',
+      detail:
+        'Opening it directly could run software. You can reveal and select it in Finder without opening it.',
+      buttons: ['Reveal in Finder', 'Cancel'],
+      defaultId: 1,
+      cancelId: 1,
+      noLink: true,
+    }
+    const result =
+      window === null
+        ? await dialog.showMessageBox(options)
+        : await dialog.showMessageBox(window, options)
+
+    return result.response === 0
+  })
 
   ipcMain.on('unsafe-open-directory', async (_, path) =>
     UNSAFE_openDirectory(path)

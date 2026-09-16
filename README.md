@@ -1,264 +1,110 @@
-<div align="center">
+# [GitHub Desktop](https://desktop.github.com)
 
-# 🚀 [GITmaxed](https://github.com/GI-STANDARDS/GITmaxed/releases/latest)
+[GitHub Desktop](https://desktop.github.com/) is an open-source [Electron](https://www.electronjs.org/)-based
+GitHub app. It is written in [TypeScript](https://www.typescriptlang.org) and
+uses [React](https://reactjs.org/).
 
-### **Multi-Account GitHub Desktop for Power Developers**
+<picture>
+  <source
+    srcset="https://user-images.githubusercontent.com/634063/202742848-63fa1488-6254-49b5-af7c-96a6b50ea8af.png"
+    media="(prefers-color-scheme: dark)"
+  />
+  <img
+    width="1072"
+    src="https://user-images.githubusercontent.com/634063/202742985-bb3b3b94-8aca-404a-8d8a-fd6a6f030672.png"
+    alt="A screenshot of the GitHub Desktop application showing changes being viewed and committed with two attributed co-authors"
+  />
+</picture>
 
-Manage **multiple GitHub accounts** in a single GitHub Desktop installation without constantly signing in and out.
+## Where can I get it?
 
-![GitHub](https://img.shields.io/badge/GitHub-Desktop-black?logo=github)
-![Platform](https://img.shields.io/badge/Platform-Windows-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Multi Account](https://img.shields.io/badge/Feature-Multiple%20Accounts-orange)
+Download the official installer for your operating system:
 
----
+ - [macOS](https://central.github.com/deployments/desktop/desktop/latest/darwin)
+ - [macOS (Apple silicon)](https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64)
+ - [Windows](https://central.github.com/deployments/desktop/desktop/latest/win32)
+ - [Windows machine-wide install](https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi)
 
-**One Desktop. Multiple GitHub Accounts.**
+Linux is not officially supported; however, you can find installers created for Linux from a fork of GitHub Desktop in the [Community Releases](https://github.com/desktop/desktop#community-releases) section.
 
-</div>
+### Beta Channel
 
----
+Want to test out new features and get fixes before everyone else? Install the
+beta channel to get access to early builds of Desktop:
 
-# ✨ GITmaxed
+ - [macOS](https://central.github.com/deployments/desktop/desktop/latest/darwin?env=beta)
+ - [macOS (Apple silicon)](https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64?env=beta)
+ - [Windows](https://central.github.com/deployments/desktop/desktop/latest/win32?env=beta)
+ - [Windows (ARM64)](https://central.github.com/deployments/desktop/desktop/latest/win32-arm64?env=beta)
 
-> [!IMPORTANT]
-> - **GitHub Desktop currently supports only one signed-in GitHub account at a time.**
->
-> - GITmaxed removes this limitation by allowing you to use multiple GitHub accounts inside the same application.
-> 
-> - GITmaxed does not use any third-party service to log you into GITHUB.
-> 
-> - The only major change is the addition of multiple-account support. Other than that, the code remains essentially the same as the original GITHUB source code.
-> 
-> - **[Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
->
-> - 14-jul-2026 8AM
+The release notes for the latest beta versions are available [here](https://desktop.github.com/release-notes/?env=beta).
 
-Perfect for developers who use:
+### Past Releases
+You can find past releases at https://desktop.githubusercontent.com. After installation of a past version, the auto update functionality will attempt to download the latest version. 
 
-- 💼 Work account
-- 👨‍💻 Personal account
-- 🚀 Open Source account
-- 🏢 Organization accounts
+### Community Releases
 
-without repeatedly logging in and out.
+There are several community-supported package managers that can be used to
+install GitHub Desktop:
+ - Windows users can install using [winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/) `c:\> winget install github-desktop` or [Chocolatey](https://chocolatey.org/) `c:\> choco install github-desktop`
+ - macOS users can install using [Homebrew](https://brew.sh/) package manager:
+      `$ brew install --cask github`
 
----
+Installers for various Linux distributions can be found on the
+[`shiftkey/desktop`](https://github.com/shiftkey/desktop) fork.
 
-# 🎯 Features
+## Is GitHub Desktop right for me? What are the primary areas of focus?
 
-| Feature | Status |
-|---------|:------:|
-| 🔐 Multiple GitHub Accounts | ✅ |
-| 👤 Account Picker while Cloning | ✅ |
-| 📂 Per-Account Repository Folder | ✅ |
-| 🤖 Automatic Account Detection | ✅ |
-| 🔄 Commit Account Switcher | ✅ |
-| 🔒 Credential Isolation | ✅ |
-| ✍ Correct Commit Author | ✅ |
+[This document](https://github.com/desktop/desktop/blob/development/docs/process/what-is-desktop.md) describes the focus of GitHub Desktop and who the product is most useful for.
 
----
+## I have a problem with GitHub Desktop
 
-# 📸 Preview
+Note: The [GitHub Desktop Code of Conduct](https://github.com/desktop/desktop/blob/development/CODE_OF_CONDUCT.md) applies in all interactions relating to the GitHub Desktop project.
 
-https://github.com/user-attachments/assets/53c91f6d-0d72-4e2c-8bfe-c241f8029126
+First, please search the [open issues](https://github.com/desktop/desktop/issues?q=is%3Aopen)
+and [closed issues](https://github.com/desktop/desktop/issues?q=is%3Aclosed)
+to see if your issue hasn't already been reported (it may also be fixed).
 
----
+There is also a list of [known issues](https://github.com/desktop/desktop/blob/development/docs/known-issues.md)
+that are being tracked against Desktop, and some of these issues have workarounds.
 
-# ⚡ Quick Start
+If you can't find an issue that matches what you're seeing, open a [new issue](https://github.com/desktop/desktop/issues/new/choose),
+choose the right template and provide us with enough information to investigate
+further.
 
-## 📥 Installation
+## The issue I reported isn't fixed yet. What can I do?
 
-Download the [Latest Release](https://github.com/GI-STANDARDS/GITmaxed/releases/latest)
+If nobody has responded to your issue in a few days, you're welcome to respond to it with a friendly ping in the issue. Please do not respond more than a second time if nobody has responded. The GitHub Desktop maintainers are constrained in time and resources, and diagnosing individual configurations can be difficult and time consuming. While we'll try to at least get you pointed in the right direction, we can't guarantee we'll be able to dig too deeply into any one person's issue.
 
-```text
-1. Launch GitHubDesktop.exe
-2. Sign in with your first GitHub account
-3. Open:
-   Settings → Accounts
-4. Add additional GitHub accounts
-5. Start working 🚀
-```
+## How can I contribute to GitHub Desktop?
 
----
+The [CONTRIBUTING.md](./.github/CONTRIBUTING.md) document will help you get setup and
+familiar with the source. The [documentation](docs/) folder also contains more
+resources relevant to the project.
 
-## 🛠 Build From Source
+If you're looking for something to work on, check out the [help wanted](https://github.com/desktop/desktop/issues?q=is%3Aissue+is%3Aopen+label%3A%22help%20wanted%22) label.
 
-```bash
-git clone https://github.com/GI-STANDARDS/GITmaxed
+## Building Desktop
 
-cd GITmaxed
+To setup your development environment for building Desktop, check out: [`setup.md`](./docs/contributing/setup.md).
 
-yarn install
+## More Resources
 
-yarn build:prod
+See [desktop.github.com](https://desktop.github.com) for more product-oriented
+information about GitHub Desktop.
 
-yarn start
-```
+See our [getting started documentation](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop) for more information on how to set up, authenticate, and configure GitHub Desktop.
 
----
+## License
 
-# 🧠 How It Works
-
-```text
-Repository
-      │
-      ▼
-Is Account Assigned?
-      │
- ┌────┴────┐
- │         │
-Yes        No
- │         │
- ▼         ▼
-Use      Detect Folder
-Assigned     │
-Account      ▼
-        GitHub/{username}/{repo}
-               │
-        ┌──────┴──────┐
-        │             │
-     Found         Not Found
-        │             │
-        ▼             ▼
- Use Matching     Fallback to
-    Account      Default Account
-```
-
----
-
-# 🏗 Architecture
-
-## 🧩 3-Tier Account Resolution
-
-```text
-1️⃣ Manual Assignment
-        │
-        ▼
-2️⃣ Folder Detection
-GitHub/{username}/{repo}
-        │
-        ▼
-3️⃣ Endpoint Fallback
-```
-
-This guarantees the correct account is selected whenever possible while remaining fully backward compatible.
-
----
-
-# 📁 Project Structure
-
-| File | Purpose |
-|------|---------|
-| `app/src/lib/get-account-for-repository.ts` | 🧠 Core account resolution engine |
-| `app/src/lib/trampoline/find-account.ts` | 🔐 Credential helper |
-| `app/src/ui/changes/commit-message-avatar.tsx` | 👤 Commit account switcher |
-
----
-
-# 💡 Example Folder Structure
+**[MIT](LICENSE)**
 
-```text
-GitHub
-│
-├── john-work
-│   ├── API
-│   ├── Dashboard
-│   └── Website
-│
-├── john-personal
-│   ├── Portfolio
-│   ├── Game
-│   └── AI
-│
-└── OpenSource
-    ├── React
-    └── Linux
-```
-
-GITmaxed automatically determines which GitHub account should be used based on the repository location.
-
----
-
-# ✅ Benefits
-
-- 🚀 No constant login/logout
-- 🔐 Separate credentials
-- 👤 Correct commit author
-- 📂 Automatic account selection
-- ⚡ Faster workflow
-- 🧹 Cleaner repository organization
-
----
-
-# ⚠ Current Limitations
-
-> [!WARNING]
-> This project is still evolving.
-
-Current limitations include:
-
-- Windows only
-- GitHub Enterprise not supported yet
-- UI still needs refinement
-- Automated multi-account testing is not implemented
-
----
-
-# 📌 Roadmap
-
-- [x] Multiple GitHub accounts
-- [x] Credential isolation
-- [x] Folder detection
-- [x] Commit account switcher
-- [ ] GitHub Enterprise support
-- [ ] macOS support
-- [ ] Linux support
-- [ ] UI improvements
-- [ ] Automated tests
-- [ ] Plugin architecture
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome!
-
-If you'd like to improve GITmaxed:
-
-```text
-Fork
-   │
-   ▼
-Create Branch
-   │
-   ▼
-Commit Changes
-   │
-   ▼
-Open Pull Request 🚀
-```
-
----
-
-# ⭐ Support
-
-If [GITmaxed](https://github.com/GI-STANDARDS/GITmaxed/releases/latest) saves you time,
-
-⭐ **Star the repository**
-
-and help other developers discover it.
-
----
-
-# 📜 License
-
-Licensed under the **[MIT License](https://github.com/GI-STANDARDS/GITmaxed/blob/main/LICENSE)**
-
----
-
-<div align="center">
-   
-### Built with ❤️ by GI-STANDARDS for developers
-</div>
+The MIT license grant is not for GitHub's trademarks, which include the logo
+designs. GitHub reserves all trademark and copyright rights in and to all
+GitHub trademarks. GitHub's logos include, for instance, the stylized
+Invertocat designs that include "logo" in the file title in the following
+folder: [logos](app/static/logos).
+
+GitHub® and its stylized versions and the Invertocat mark are GitHub's
+Trademarks or registered Trademarks. When using GitHub's logos, be sure to
+follow the GitHub [logo guidelines](https://github.com/logos).

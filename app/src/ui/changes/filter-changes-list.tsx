@@ -36,7 +36,7 @@ import { ChangedFile } from './changed-file'
 import { IAutocompletionProvider } from '../autocompletion'
 import { showContextualMenu } from '../../lib/menu-item'
 import { arrayEquals } from '../../lib/equality'
-import { clipboard } from 'electron'
+import { writeClipboardText } from '../main-process-proxy'
 import { basename } from 'path'
 import { Commit, ICommitContext } from '../../models/commit'
 import {
@@ -103,7 +103,6 @@ const GitIgnoreFileName = '.gitignore'
 interface IFilterChangesListProps {
   readonly repository: Repository
   readonly repositoryAccount: Account | null
-  readonly onAccountChanged: (accountLogin: string | null) => void
   readonly workingDirectory: WorkingDirectoryStatus
   readonly mostRecentLocalCommit: Commit | null
   /**
@@ -218,6 +217,12 @@ interface IFilterChangesListProps {
   readonly showCommitLengthWarning: boolean
 
   readonly accounts: ReadonlyArray<Account>
+
+  /** The currently assigned account for this repository. */
+  readonly currentAccount: Account | null
+
+  /** Called when the user switches the assigned account for this repository. */
+  readonly onAccountChanged: (accountLogin: string | null) => void
 
   /** The file list filter state containing all filter options */
   readonly fileListFilter: IFileListFilterState
@@ -586,7 +591,7 @@ export class FilterChangesList extends React.Component<
       label: CopyFilePathLabel,
       action: () => {
         const fullPath = Path.join(this.props.repository.path, file.path)
-        clipboard.writeText(fullPath)
+        writeClipboardText(fullPath)
       },
     }
   }
@@ -596,7 +601,7 @@ export class FilterChangesList extends React.Component<
   ): IMenuItem => {
     return {
       label: CopyRelativeFilePathLabel,
-      action: () => clipboard.writeText(Path.normalize(file.path)),
+      action: () => writeClipboardText(Path.normalize(file.path)),
     }
   }
 
@@ -609,7 +614,7 @@ export class FilterChangesList extends React.Component<
         const fullPaths = files.map(file =>
           Path.join(this.props.repository.path, file.path)
         )
-        clipboard.writeText(fullPaths.join(EOL))
+        writeClipboardText(fullPaths.join(EOL))
       },
     }
   }
@@ -621,7 +626,7 @@ export class FilterChangesList extends React.Component<
       label: CopySelectedRelativePathsLabel,
       action: () => {
         const paths = files.map(file => Path.normalize(file.path))
-        clipboard.writeText(paths.join(EOL))
+        writeClipboardText(paths.join(EOL))
       },
     }
   }
@@ -968,7 +973,6 @@ export class FilterChangesList extends React.Component<
         filesToBeCommittedCount={filesSelected.length}
         repository={repository}
         repositoryAccount={repositoryAccount}
-        onAccountChanged={this.props.onAccountChanged}
         commitMessage={this.props.commitMessage}
         focusCommitMessage={this.props.focusCommitMessage}
         autocompletionProviders={this.props.autocompletionProviders}
@@ -1012,6 +1016,8 @@ export class FilterChangesList extends React.Component<
         onShowCreateForkDialog={this.onShowCreateForkDialog}
         onFilesToCommitNotVisible={this.onFilesToCommitNotVisible}
         accounts={this.props.accounts}
+        currentAccount={this.props.currentAccount}
+        onAccountChanged={this.props.onAccountChanged}
         onSuccessfulCommitCreated={this.onSuccessfulCommitCreated}
         submitButtonAriaDescribedBy={'hidden-changes-warning'}
         skipCommitHooks={this.props.skipCommitHooks}
