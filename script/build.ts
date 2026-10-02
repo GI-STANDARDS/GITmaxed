@@ -2,7 +2,7 @@
 /// <reference path="./globals.d.ts" />
 
 import * as cp from 'child_process'
-import packager, { OfficialArch, Options } from '@electron/packager'
+import { packager, OfficialArch, Options } from '@electron/packager'
 import frontMatter from 'front-matter'
 import * as os from 'os'
 import * as path from 'path'

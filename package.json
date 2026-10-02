@@ -60,7 +60,32 @@
     "yarn": ">= 1.9"
   },
   "resolutions": {
-    "@types/react-css-transition-replace/@types/react": "^16.14.62"
+    "@types/react-css-transition-replace/@types/react": "^16.14.62",
+    "eslint-plugin-github/eslint-plugin-jsx-a11y/@babel/runtime": "^7.26.10",
+    "eslint-plugin-github/eslint-plugin-jsx-a11y/semver": "^6.3.1",
+    "legal-eagle/underscore": "^1.13.8",
+    "ts-loader/semver": "^7.5.2",
+    "front-matter/js-yaml": "^3.15.2",
+    "eslint/js-yaml": "^4.3.2",
+    "eslint-plugin-github/@eslint/eslintrc/js-yaml": "^4.3.2",
+    "markdownlint-cli/js-yaml": "^5.4.1",
+    "@electron/packager/@electron/get/undici": "^7.29.1",
+    "printenvz/node-gyp/undici": "^6.28.1",
+    "node-test-github-reporter/@actions/core/@actions/http-client/undici": "^6.28.1",
+    "@github/markdownlint-github/markdown-it": "^14.3.1",
+    "markdownlint-cli/markdown-it": "^14.3.1",
+    "**/fast-uri": "^3.1.8",
+    "glob/minimatch/brace-expansion": "^1.1.21",
+    "electron-winstaller/@electron/asar/minimatch/brace-expansion": "^1.1.21",
+    "electron-winstaller/@electron/asar/glob/minimatch/brace-expansion": "^1.1.21",
+    "@types/electron-winstaller/electron-winstaller/@electron/asar/glob/minimatch/brace-expansion": "^1.1.21",
+    "@types/electron-winstaller/electron-winstaller/temp/rimraf/glob/minimatch/brace-expansion": "^1.1.21",
+    "**/@typescript-eslint/typescript-estree/minimatch/brace-expansion": "^2.1.7",
+    "@electron/packager/@electron/asar/minimatch/brace-expansion": "^5.0.12",
+    "@electron/packager/@electron/asar/glob/minimatch/brace-expansion": "^5.0.12",
+    "@electron/packager/@electron/universal/@electron/asar/glob/minimatch/brace-expansion": "^5.0.12",
+    "markdownlint-cli/minimatch/brace-expansion": "^5.0.12",
+    "rimraf/glob/minimatch/brace-expansion": "^5.0.12"
   },
   "dependencies": {
     "@primer/octicons": "^19.28.1",
@@ -101,12 +126,12 @@
     "typescript": "^5.8.2",
     "webpack": "^5.104.1",
     "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-dev-middleware": "^5.3.4",
+    "webpack-dev-middleware": "^7.4.6",
     "webpack-hot-middleware": "^2.25.1",
     "webpack-merge": "^6.0.1"
   },
   "devDependencies": {
-    "@electron/packager": "^18.4.4",
+    "@electron/packager": "^20.3.0",
     "@github/markdownlint-github": "^0.8.3",
     "@playwright/test": "^1.58.2",
     "@types/byline": "^4.2.31",

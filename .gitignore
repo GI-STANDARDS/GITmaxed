@@ -16,6 +16,10 @@ vendor/desktop-trampoline/build/
 .eslintcache
 *.iml
 .envrc
+.env
+app/.env
+gemoji/
+app/static/common/choosealicense.com/
 junit*.xml
 *.swp
 tslint-rules/

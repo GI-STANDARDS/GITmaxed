@@ -4,6 +4,7 @@ import { Dispatcher } from '../dispatcher'
 import { getDefaultDir, setDefaultDir } from '../lib/default-dir'
 import {
   Account,
+  accountEquals,
   isDotComAccount,
   isEnterpriseAccount,
 } from '../../models/account'
@@ -409,8 +410,8 @@ export class CloneRepository extends React.Component<
     const tabAccounts = this.getAccountsForTab(tab, this.props.accounts)
     const selectedAccount =
       (tabState.selectedAccount
-        ? tabAccounts.find(
-            a => a.endpoint === tabState.selectedAccount?.endpoint
+        ? tabAccounts.find(a =>
+            accountEquals(a, tabState.selectedAccount!)
           )
         : undefined) ?? tabAccounts.at(0)
 
@@ -615,7 +616,15 @@ export class CloneRepository extends React.Component<
     const safeName = lastParsedIdentifier
       ? sanitizeCloneName(lastParsedIdentifier.name)
       : null
-    const directory = safeName ? Path.join(path, safeName) : path
+    const safeOwner = lastParsedIdentifier
+      ? sanitizeCloneName(lastParsedIdentifier.owner)
+      : null
+    const directory =
+      safeName && safeOwner
+        ? Path.join(path, safeOwner, safeName)
+        : safeName
+        ? Path.join(path, safeName)
+        : path
 
     this.setSelectedTabState(
       { path: directory, error: null },
@@ -657,16 +666,24 @@ export class CloneRepository extends React.Component<
     }
 
     const safeName = parsed ? sanitizeCloneName(parsed.name) : null
+    const safeOwner = parsed ? sanitizeCloneName(parsed.owner) : null
 
     let newPath: string
 
     const dirPath = tabState.path
     if (lastParsedIdentifier) {
-      if (safeName) {
+      if (safeName && safeOwner) {
+        // Replace the previously parsed owner/name, preserving the base
+        // directory (i.e. …`/GitHub/<owner>/<name>`).
+        const basePath = Path.dirname(Path.dirname(dirPath))
+        newPath = Path.join(basePath, safeOwner, safeName)
+      } else if (safeName) {
         newPath = Path.join(Path.dirname(dirPath), safeName)
       } else {
         newPath = Path.dirname(dirPath)
       }
+    } else if (safeName && safeOwner) {
+      newPath = Path.join(dirPath, safeOwner, safeName)
     } else if (safeName) {
       newPath = Path.join(dirPath, safeName)
     } else {
@@ -798,7 +815,10 @@ export class CloneRepository extends React.Component<
     this.props.dispatcher.clone(url, path, { defaultBranch })
     this.props.onDismissed()
 
-    setDefaultDir(Path.resolve(path, '..'))
+    // Clones now land in `<base>/<owner>/<repo>` so the persisted default
+    // directory should point back at the base (e.g. `~/Documents/GitHub`),
+    // not the owner subfolder, so subsequent clones start fresh.
+    setDefaultDir(Path.resolve(path, '..', '..'))
   }
 
   private onWindowFocus = () => {

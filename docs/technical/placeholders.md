@@ -35,10 +35,8 @@ as a hash of key-value pairs.
 ```ts
 function getReplacements() {
   return {
-    __OAUTH_CLIENT_ID__: s(process.env.DESKTOP_OAUTH_CLIENT_ID || devClientId),
-    __OAUTH_SECRET__: s(
-      process.env.DESKTOP_OAUTH_CLIENT_SECRET || devClientSecret
-    ),
+    __OAUTH_CLIENT_ID__: s(process.env.DESKTOP_OAUTH_CLIENT_ID ?? ''),
+    __OAUTH_SECRET__: s(process.env.DESKTOP_OAUTH_CLIENT_SECRET ?? ''),
     __DARWIN__: process.platform === 'darwin',
     __WIN32__: process.platform === 'win32',
     __LINUX__: process.platform === 'linux',
