@@ -34,6 +34,7 @@ Manage **multiple GitHub accounts** in a single GitHub Desktop installation with
 > - **[Check Issue Before Downloading](https://github.com/GI-STANDARDS/GITmaxed/issues/2)**
 >
 > - 14-jul-2026 8AM
+> - **[Download Gitmaxed](https://github.com/GI-STANDARDS/GITmaxed/releases/download/v2/GITmaxedPortablePatchV3.6.5.zip)**
 
 Perfect for developers who use:
 
